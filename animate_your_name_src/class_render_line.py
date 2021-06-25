@@ -6,7 +6,7 @@ class AnimatedColumn:
     # params:
     # ax where to render
     # array like [1, 0, 1, 0, 1, 1, 0] (view reference left --> top)
-    def __init__(self, ax, row, col_index=0, motif_filled="o", motif_empty=","):
+    def __init__(self, ax, row, col_index=0, motif_filled="s", motif_empty="1"):
         # store params
         self.ax = ax
         self.row = row
@@ -38,8 +38,8 @@ class AnimatedColumn:
                 self.empty_part.append(point)
 
         # object to render
-        self.scatter_filled, = self.ax.plot([0], [0], marker=self.motif_filled, linestyle='None', markerfacecolor='None', color="#1f77b4")
-        self.scatter_empty, = self.ax.plot([1], [1], marker=self.motif_empty, linestyle='None', markerfacecolor='None', color="#1f77b4")
+        self.scatter_filled, = self.ax.plot([], [], marker=self.motif_filled, linestyle='None', markerfacecolor='None', color="#1f77b4")
+        self.scatter_empty, = self.ax.plot([], [], marker=self.motif_empty, linestyle='None', markerfacecolor='None', color="#1f77b4")
         return
 
     # i: index from top
@@ -61,7 +61,8 @@ class AnimatedColumn:
                 dtype=int
                 )
 
-            self.scatter_filled.set_data(*data_filled_part.T)
+            if len(data_filled_part):
+                self.scatter_filled.set_data(*data_filled_part.T)
 
         # for empty part
         if len(self.empty_part):
@@ -70,7 +71,8 @@ class AnimatedColumn:
                 dtype=int
                 )
 
-            self.scatter_empty.set_data(*data_empty_part.T)
+            if len(data_empty_part):
+                self.scatter_empty.set_data(*data_empty_part.T)
 
         return self.scatter_filled, self.scatter_empty
 
@@ -84,12 +86,12 @@ class AnimatedColumn:
 
 # # set up axis limits
 # ax.set_xlim([-1, 5])
-# ax.set_ylim([0, 2 * nb_rows + 1])
+# ax.set_ylim([0, nb_rows + 1])
 
 # # create column to render
 # col = AnimatedColumn(ax, line, col_index=0)
 
 # # render (skip k from top and 3 from bottom)
-# col.render(5, 3)
+# col.render(j=-11)
 
 # plt.show()
