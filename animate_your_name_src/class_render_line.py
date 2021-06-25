@@ -44,7 +44,12 @@ class AnimatedColumn:
 
     # i: index from top
     # j: index from bottom
-    def render(self, i, j):
+    def render(self, i=None, j=None):
+        # i, j weren t provided 
+        # render entire line
+        i = i if i else self.n
+        j = j if j else 1
+
         # check if empty
         # select part to render
         # transpose then unpack to get x and y
@@ -70,21 +75,21 @@ class AnimatedColumn:
         return self.scatter_filled, self.scatter_empty
 
 
-# example
-nb_rows = 10
-line = [1 for i in range(nb_rows)]
+# # example
+# nb_rows = 10
+# line = [1 for i in range(nb_rows)]
 
-# initialize fig and ax
-fig, ax = plt.subplots()
+# # initialize fig and ax
+# fig, ax = plt.subplots()
 
-# set up axis limits
-ax.set_xlim([-1, 5])
-ax.set_ylim([0, 2 * nb_rows + 1])
+# # set up axis limits
+# ax.set_xlim([-1, 5])
+# ax.set_ylim([0, 2 * nb_rows + 1])
 
-# create column to render
-col = AnimatedColumn(ax, line, col_index=0)
+# # create column to render
+# col = AnimatedColumn(ax, line, col_index=0)
 
-# render (skip k from top and 3 from bottom)
-col.render(5, 3)
+# # render (skip k from top and 3 from bottom)
+# col.render(5, 3)
 
-plt.show()
+# plt.show()
