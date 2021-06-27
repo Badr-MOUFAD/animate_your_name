@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 from class_render_line import AnimatedColumn
+from class_render_sin import AnimatedWave
 
 
 class AnimatedGrid:
@@ -24,13 +25,15 @@ class AnimatedGrid:
         
         # create animated cols
         self.animated_cols = []
-        i = 0
+        i = 1
         for col in self.grid:
             self.animated_cols.append(
                 AnimatedColumn(ax, col, col_index=i)
             )
             i += 1
-        
+
+        # create wave
+        self.wave = AnimatedWave(fig, ax, spatial_period=len(self.animated_cols) + 1, interval=100)
         return
 
     def render(self):
@@ -58,18 +61,21 @@ class AnimatedGrid:
                 arr_renders +=  [*col.render(j=j)]
 
                 col_index += 1
+            
+            new_wave = self.wave.render(frame=k)
+            arr_renders.append(new_wave)
 
             return arr_renders
 
         nb_cols = len(self.animated_cols)
         n = len(self.grid[0])
 
-        self.a = FuncAnimation(self.fig, anim, frames=range(nb_cols * nb_cols + n + 1), interval=50, repeat=True)
+        self.a = FuncAnimation(self.fig, anim, frames=range(nb_cols * nb_cols + n + 1), interval=100, repeat=True)
         return
 
 
-# example
-# init fig
+# # example
+# # init fig
 fig, ax = plt.subplots()
 
 # grid to animate
