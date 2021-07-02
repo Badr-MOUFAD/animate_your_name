@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-from numpy.core.fromnumeric import repeat
 
 
 class AnimatedWave:

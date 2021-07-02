@@ -38,7 +38,7 @@ class AnimatedColumn:
                 self.empty_part.append(point)
 
         # object to render
-        self.scatter_filled, = self.ax.plot([], [], marker=self.motif_filled, linestyle='None',  color="#1f77b4") # markerfacecolor='None',
+        self.scatter_filled, = self.ax.plot([], [], marker=self.motif_filled, linestyle='None',  color="#1f77b4", markersize=12) # markerfacecolor='None',
         self.scatter_empty, = self.ax.plot([], [], marker=self.motif_empty, linestyle='None', color="#1f77b4")
         return
 
