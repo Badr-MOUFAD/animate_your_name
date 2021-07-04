@@ -9,10 +9,6 @@ Countless were the hours where I sat in front of my computer and enjoyed as well
 Following **Tobias Smollett** quote *"Number 3 is always fortunate"*, and to celebrate these 3 years, there was nothing better than making a tool that animates a given grid using the so-called packages `numpy` and `matplotlib` and particularly to use it to animate my name.
 
 
-**Note:** The prime trigger to concretize this idea was my desire to offer animation as a gift to a close friend for his birthday.
-
-
-
 # Usage
 
 If you want to try this tool, firstly you need to clone the repository, create a virtual environment and install requirements. 
@@ -67,6 +63,9 @@ An example script can be found at `animate_your_name_src/example_usage.py`
 
 Following the steps above, 
 
-<div style="display: flex; justify-content: center; margin-top: 20px">
+<div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
     <img src="screenshots/animated_badr_moufad_modif.gif" />
 </div>
+
+
+> **Note:** The prime trigger to concretize this idea was my desire to offer animation as a gift to a close friend for his birthday.
